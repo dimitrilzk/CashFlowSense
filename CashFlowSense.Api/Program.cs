@@ -1,5 +1,7 @@
 using CashFlowSense.Data;
-using CashFlowSense.Data.Identity;
+using CashFlowSense.Data.Entities;
+using CashFlowSense.Services;
+using CashFlowSense.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +27,8 @@ namespace CashFlowSense.Api
             // Identity
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            // Own services
+            builder.Services.AddTransient<IUserService, UserService>();
 
             var app = builder.Build();
 

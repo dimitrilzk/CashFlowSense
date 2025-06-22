@@ -1,4 +1,4 @@
-﻿using CashFlowSense.Data.Identity;
+﻿using CashFlowSense.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
