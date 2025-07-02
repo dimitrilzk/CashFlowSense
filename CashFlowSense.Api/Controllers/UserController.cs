@@ -12,5 +12,11 @@ namespace CashFlowSense.Api.Controllers
         {
             return Ok(await userService.RegisterUserAsync(request));
         }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<LoginUserResponse>> LoginUser(LoginUserRequest request)
+        {
+            return Ok(await userService.LoginUserAsync(request));
+        }
     }
 }

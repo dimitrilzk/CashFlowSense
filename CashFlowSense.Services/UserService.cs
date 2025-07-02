@@ -9,10 +9,12 @@ namespace CashFlowSense.Services
     public class UserService : IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IJwtTokenGenerator _tokenGenerator;
         
-        public UserService(UserManager<ApplicationUser> userManager)
+        public UserService(UserManager<ApplicationUser> userManager, IJwtTokenGenerator tokenGenerator)
         {
             _userManager = userManager;
+            _tokenGenerator = tokenGenerator;
         }
 
         public async Task<bool> UserExistsAsync(string email)
@@ -22,21 +24,21 @@ namespace CashFlowSense.Services
 
         public async Task<RegisterUserResponse> RegisterUserAsync(RegisterUserRequest request)
         {
-            if (request.Password != request.ConfirmPassword)
-            {
-                return new RegisterUserResponse
-                {
-                    IsSuccess = false,
-                    ErrorMessage = "Le password non coincidono."
-                };
-            }
-
             if(await UserExistsAsync(request.Email))
             {
                 return new RegisterUserResponse
                 {
                     IsSuccess = false,
                     ErrorMessage = "Un utente con questa email esiste già."
+                };
+            }
+
+            if (request.Password != request.ConfirmPassword)
+            {
+                return new RegisterUserResponse
+                {
+                    IsSuccess = false,
+                    ErrorMessage = "Le password non coincidono."
                 };
             }
 
@@ -70,6 +72,43 @@ namespace CashFlowSense.Services
                     Email = user.Email,
                     UserId = user.Id,
                     CreatedAt = DateTime.UtcNow
+                }
+            };
+        }
+
+        public async Task<LoginUserResponse> LoginUserAsync(LoginUserRequest request)
+        {
+            var user = await _userManager.FindByEmailAsync(request.Email);
+
+            if (user == null)
+            {
+                return new LoginUserResponse
+                {
+                    IsSuccess = false,
+                    ErrorMessage = "L'utente con questa email non esiste."
+                };
+            }
+
+            if (!await _userManager.CheckPasswordAsync(user, request.Password))
+            {
+                return new LoginUserResponse
+                {
+                    IsSuccess = false,
+                    ErrorMessage = "Password errata."
+                };
+            }
+
+            var token = _tokenGenerator.GenerateToken(user);
+
+            return new LoginUserResponse
+            {
+                IsSuccess = true,
+                Data = new LoginUserData
+                {
+                    FirstName = user.FirstName,
+                    Email = user.Email!,
+                    UserId = user.Id,
+                    Token = token
                 }
             };
         }
