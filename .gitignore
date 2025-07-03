@@ -369,6 +369,7 @@ FodyWeavers.xsd
 # Exclude Node modules (Angular)
 node_modules/
 dist/
+out-tsc/
 .angular/
 *.tsbuildinfo
 
@@ -376,5 +377,18 @@ dist/
 bin/
 obj/
 .vscode/
+.idea/
 *.user
 *.suo
+
+# File di log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# File temporanei OS
+.DS_Store
+Thumbs.db
+
+# Env file se usi variabili di ambiente (se presenti)
+.env
