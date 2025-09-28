@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
+          "style": "less",
           "type": "component",
           "skipTests": true
         },
@@ -32,14 +32,23 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "less",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@taiga-ui/icons/src",
+                "output": "assets/taiga-ui/icons"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": [
+              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "src/styles.less"
+            ]
           },
           "configurations": {
             "production": {
@@ -84,14 +93,14 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "less",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": ["src/styles.less"]
           }
         }
       }
