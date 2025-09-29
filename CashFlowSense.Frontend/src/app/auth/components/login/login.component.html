@@ -1,1 +1,48 @@
-<p>login works!</p>
+<form
+  tuiAppearance="floating"
+  tuiCardLarge
+  tuiForm="m"
+  [formGroup]="form"
+  [style.max-width.rem]="32"
+>
+  <header tuiHeader="h3">
+    <h1 tuiTitle>Login</h1>
+  </header>
+  <div class="stack">
+    <tui-textfield>
+      <label tuiLabel>Email</label>
+      <input
+        formControlName="email"
+        placeholder="john@wick.com"
+        tuiTextfield
+        type="email"
+      />
+    </tui-textfield>
+  </div>
+  <div class="stack">
+    <tui-textfield>
+      <label tuiLabel>Password</label>
+      <input formControlName="passwordValue" tuiTextfield type="password" />
+      <tui-icon tuiPassword />
+    </tui-textfield>
+
+    <tui-error
+      formControlName="passwordValue"
+      [error]="[] | tuiFieldError | async"
+    />
+  </div>
+  <div tuiTitle>
+    <a
+      href="https://github.com/taiga-family/taiga-ui"
+      rel="noreferrer"
+      target="_blank"
+      tuiLink
+    >
+      Nuovo? Registrati qui.
+    </a>
+  </div>
+  <footer>
+    <button appearance="secondary" tuiButton type="button">Annulla</button>
+    <button tuiButton type="submit">Invia</button>
+  </footer>
+</form>
