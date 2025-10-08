@@ -32,14 +32,14 @@
     />
   </div>
   <div tuiTitle>
-    <a
-      href="https://github.com/taiga-family/taiga-ui"
-      rel="noreferrer"
-      target="_blank"
+    <button
+      iconEnd="@tui.arrow-left"
       tuiLink
-    >
-      Nuovo? Registrati qui.
-    </a>
+      type="button"
+      [routerLink]="['/register']"
+      [style.text-decoration-line]="'underline'"
+      [textContent]="'Nuovo? Registrati qui.'"
+    ></button>
   </div>
   <footer>
     <button appearance="secondary" tuiButton type="button">Annulla</button>

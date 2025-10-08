@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import {
   TuiAppearance,
   TuiButton,
@@ -13,6 +14,7 @@ import {
   TuiTextfield,
   TuiTitle,
   TuiIcon,
+  TuiLink,
 } from '@taiga-ui/core';
 import { TuiFieldErrorPipe } from '@taiga-ui/kit';
 import { TuiCardLarge, TuiForm, TuiHeader } from '@taiga-ui/layout';
@@ -32,6 +34,8 @@ import { TuiCardLarge, TuiForm, TuiHeader } from '@taiga-ui/layout';
     TuiTextfield,
     TuiTitle,
     TuiIcon,
+    TuiLink,
+    RouterLink,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.less',
