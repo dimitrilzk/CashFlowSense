@@ -21,6 +21,9 @@ import { TuiCardLarge, TuiForm, TuiHeader } from '@taiga-ui/layout';
 
 @Component({
   selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.less',
+  standalone: true,
   imports: [
     AsyncPipe,
     ReactiveFormsModule,
@@ -37,8 +40,6 @@ import { TuiCardLarge, TuiForm, TuiHeader } from '@taiga-ui/layout';
     TuiLink,
     RouterLink,
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.less',
 })
 export class LoginComponent {
   protected readonly form = new FormGroup({
