@@ -1,44 +1,30 @@
-import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { TuiCurrency, TuiCurrencyPipe } from '@taiga-ui/addon-commerce';
+import { RouterLink } from '@angular/router';
 import { TuiDay, TuiTime } from '@taiga-ui/cdk';
 import {
   TuiButton,
-  TuiError,
-  TuiGroup,
   TuiIcon,
   TuiLabel,
   TuiTextfield,
   TuiTitle,
   TuiAppearance,
+  TuiLink,
 } from '@taiga-ui/core';
 import {
-  TuiBlock,
-  TuiCheckbox,
-  TuiChevron,
   TuiDataListWrapper,
-  TuiFieldErrorPipe,
   TuiInputNumber,
   TuiPassword,
   TuiRadio,
   TuiSelect,
-  TuiTooltip,
 } from '@taiga-ui/kit';
 import { TuiForm, TuiHeader, TuiCardLarge } from '@taiga-ui/layout';
-import {
-  TuiInputDateModule,
-  TuiInputModule,
-  TuiInputPhoneModule,
-  TuiInputSliderModule,
-  TuiInputTimeModule,
-  TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import { TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 
 @Component({
   selector: 'app-register',
@@ -46,26 +32,13 @@ import {
   styleUrl: './register.component.less',
   standalone: true,
   imports: [
-    AsyncPipe,
     ReactiveFormsModule,
-    TuiBlock,
     TuiButton,
-    TuiCheckbox,
-    TuiChevron,
-    TuiCurrencyPipe,
     TuiDataListWrapper,
-    TuiError,
-    TuiFieldErrorPipe,
     TuiForm,
-    TuiGroup,
     TuiHeader,
     TuiIcon,
-    TuiInputDateModule,
-    TuiInputModule,
     TuiInputNumber,
-    TuiInputPhoneModule,
-    TuiInputSliderModule,
-    TuiInputTimeModule,
     TuiLabel,
     TuiPassword,
     TuiRadio,
@@ -73,9 +46,10 @@ import {
     TuiTextfield,
     TuiTextfieldControllerModule,
     TuiTitle,
-    TuiTooltip,
     TuiCardLarge,
     TuiAppearance,
+    RouterLink,
+    TuiLink,
   ],
 })
 export class RegisterComponent {
