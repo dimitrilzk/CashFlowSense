@@ -1,13 +1,14 @@
 <form
   tuiAppearance="floating"
   tuiCardLarge
-  tuiForm="m"
+  tuiForm="l"
   [formGroup]="form"
   [style.max-width.rem]="32"
 >
   <header tuiHeader="h3">
     <h1 tuiTitle>Login</h1>
   </header>
+
   <div class="stack">
     <tui-textfield>
       <label tuiLabel>Email</label>
@@ -17,13 +18,15 @@
         tuiTextfield
         type="email"
       />
+      <tui-icon icon="@tui.mail" />
     </tui-textfield>
   </div>
+
   <div class="stack">
     <tui-textfield>
       <label tuiLabel>Password</label>
       <input
-        placeholder="Scegli la tua password"
+        placeholder="Scegli una password"
         tuiTextfield
         type="password"
         formControlName="passwordValue"
@@ -36,18 +39,18 @@
       [error]="[] | tuiFieldError | async"
     />
   </div>
-  <div tuiTitle>
-    <button
-      iconEnd="@tui.arrow-left"
-      tuiLink
-      type="button"
-      [routerLink]="['/register']"
-      [style.text-decoration-line]="'underline'"
-      [textContent]="'Nuovo? Registrati qui.'"
-    ></button>
-  </div>
+
   <footer>
-    <button appearance="secondary" tuiButton type="button">Annulla</button>
-    <button tuiButton type="submit">Invia</button>
+    <button appearance="primary" tuiButton type="submit">Login</button>
+    <div tuiTitle>
+      <button
+        iconEnd="@tui.arrow-left"
+        tuiLink
+        type="button"
+        [routerLink]="['/register']"
+        [style.text-decoration-line]="'underline'"
+        [textContent]="'Nuovo? Registrati qui.'"
+      ></button>
+    </div>
   </footer>
 </form>

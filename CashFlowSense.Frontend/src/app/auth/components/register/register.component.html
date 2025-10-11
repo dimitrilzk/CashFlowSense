@@ -5,11 +5,11 @@
   [formGroup]="testForm"
   [style.max-width.rem]="35"
 >
-  <header tuiHeader>
-    <h3 tuiTitle>
+  <header tuiHeader="h3">
+    <h1 tuiTitle>
       Registrati
       <span tuiSubtitle>Inserisci i tuoi dati per creare un account</span>
-    </h3>
+    </h1>
   </header>
 
   <fieldset>
@@ -63,19 +63,17 @@
     <tui-icon tuiPassword />
   </tui-textfield>
 
-  <div tuiTitle>
-    <button
-      iconEnd="@tui.arrow-left"
-      tuiLink
-      type="button"
-      [routerLink]="['/login']"
-      [style.text-decoration-line]="'underline'"
-      [textContent]="'Possiedi già un account? Vai al login.'"
-    ></button>
-  </div>
-
   <footer>
     <button appearance="primary" tuiButton type="button">Registrati</button>
-    <button appearance="secondary" tuiButton type="button">Cancella</button>
+    <div tuiTitle>
+      <button
+        iconEnd="@tui.arrow-left"
+        tuiLink
+        type="button"
+        [routerLink]="['/login']"
+        [style.text-decoration-line]="'underline'"
+        [textContent]="'Possiedi già un account? Vai al login.'"
+      ></button>
+    </div>
   </footer>
 </form>

@@ -13,10 +13,10 @@ import {
   TuiError,
   TuiTextfield,
   TuiTitle,
-  TuiIcon,
   TuiLink,
+  TuiIcon,
 } from '@taiga-ui/core';
-import { TuiFieldErrorPipe } from '@taiga-ui/kit';
+import { TuiFieldErrorPipe, TuiPassword } from '@taiga-ui/kit';
 import { TuiCardLarge, TuiForm, TuiHeader } from '@taiga-ui/layout';
 
 @Component({
@@ -36,15 +36,16 @@ import { TuiCardLarge, TuiForm, TuiHeader } from '@taiga-ui/layout';
     TuiHeader,
     TuiTextfield,
     TuiTitle,
-    TuiIcon,
     TuiLink,
     RouterLink,
+    TuiIcon,
+    TuiPassword,
   ],
 })
 export class LoginComponent {
   protected readonly form = new FormGroup({
     name: new FormControl('', Validators.required),
-    email: new FormControl(''),
-    passwordValue: new FormControl(''),
+    email: new FormControl('', Validators.required),
+    passwordValue: new FormControl('', Validators.required),
   });
 }
