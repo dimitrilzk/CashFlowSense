@@ -2,7 +2,7 @@
   tuiAppearance="floating"
   tuiCardLarge
   tuiForm="l"
-  [formGroup]="testForm"
+  [formGroup]="form"
   [style.max-width.rem]="35"
 >
   <header tuiHeader="h3">
@@ -15,29 +15,21 @@
   <fieldset>
     <tui-textfield>
       <label tuiLabel>Nome</label>
-      <input
-        placeholder="Il tuo nome"
-        tuiTextfield
-        formControlName="nameValue"
-      />
+      <input placeholder="Il tuo nome" tuiTextfield formControlName="name" />
     </tui-textfield>
     <tui-textfield>
       <label tuiLabel>Cognome</label>
       <input
         placeholder="Il tuo cognome"
         tuiTextfield
-        formControlName="nameValue"
+        formControlName="lastName"
       />
     </tui-textfield>
   </fieldset>
 
   <tui-textfield>
     <label tuiLabel>Email</label>
-    <input
-      placeholder="La tua email"
-      tuiTextfield
-      formControlName="nameValue"
-    />
+    <input placeholder="La tua email" tuiTextfield formControlName="email" />
     <tui-icon icon="@tui.mail" />
   </tui-textfield>
 
@@ -47,7 +39,7 @@
       placeholder="Scegli una password"
       tuiTextfield
       type="password"
-      formControlName="passwordValue"
+      formControlName="password"
     />
     <tui-icon tuiPassword />
   </tui-textfield>
@@ -58,7 +50,7 @@
       placeholder="Conferma la password"
       tuiTextfield
       type="password"
-      formControlName="passwordValue"
+      formControlName="confirmPassword"
     />
     <tui-icon tuiPassword />
   </tui-textfield>
