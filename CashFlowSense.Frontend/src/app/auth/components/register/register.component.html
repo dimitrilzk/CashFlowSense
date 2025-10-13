@@ -3,6 +3,7 @@
   tuiCardLarge
   tuiForm="l"
   [formGroup]="form"
+  (ngSubmit)="onSubmit()"
   [style.max-width.rem]="35"
 >
   <header tuiHeader="h3">
@@ -29,7 +30,12 @@
 
   <tui-textfield>
     <label tuiLabel>Email</label>
-    <input placeholder="La tua email" tuiTextfield formControlName="email" />
+    <input
+      placeholder="La tua email"
+      tuiTextfield
+      formControlName="email"
+      type="text"
+    />
     <tui-icon icon="@tui.mail" />
   </tui-textfield>
 
@@ -56,7 +62,14 @@
   </tui-textfield>
 
   <footer>
-    <button appearance="primary" tuiButton type="button">Registrati</button>
+    <button
+      appearance="primary"
+      tuiButton
+      type="submit"
+      [disabled]="!form.valid"
+    >
+      Registrati
+    </button>
     <div tuiTitle>
       <button
         iconEnd="@tui.arrow-left"

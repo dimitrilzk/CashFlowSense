@@ -43,9 +43,12 @@ import { TuiCardLarge, TuiForm, TuiHeader } from '@taiga-ui/layout';
   ],
 })
 export class LoginComponent {
-  protected readonly form = new FormGroup({
-    name: new FormControl('', Validators.required),
+  protected form = new FormGroup({
     email: new FormControl('', Validators.required),
-    passwordValue: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
 }

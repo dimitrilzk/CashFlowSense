@@ -3,6 +3,7 @@
   tuiCardLarge
   tuiForm="l"
   [formGroup]="form"
+  (ngSubmit)="onSubmit()"
   [style.max-width.rem]="32"
 >
   <header tuiHeader="h3">
@@ -13,10 +14,10 @@
     <tui-textfield>
       <label tuiLabel>Email</label>
       <input
-        formControlName="email"
-        placeholder="john@wick.com"
+        placeholder="La tua email"
         tuiTextfield
-        type="email"
+        formControlName="email"
+        type="text"
       />
       <tui-icon icon="@tui.mail" />
     </tui-textfield>
@@ -29,19 +30,26 @@
         placeholder="Scegli una password"
         tuiTextfield
         type="password"
-        formControlName="passwordValue"
+        formControlName="password"
       />
       <tui-icon tuiPassword />
     </tui-textfield>
 
     <tui-error
-      formControlName="passwordValue"
+      formControlName="password"
       [error]="[] | tuiFieldError | async"
     />
   </div>
 
   <footer>
-    <button appearance="primary" tuiButton type="submit">Login</button>
+    <button
+      appearance="primary"
+      tuiButton
+      type="submit"
+      [disabled]="!form.valid"
+    >
+      Login
+    </button>
     <div tuiTitle>
       <button
         iconEnd="@tui.arrow-left"

@@ -1,10 +1,5 @@
-import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import {
   TuiButton,
@@ -52,11 +47,17 @@ import { TuiTextfieldControllerModule } from '@taiga-ui/legacy';
   ],
 })
 export class RegisterComponent {
-  protected form = new FormGroup({
-    name: new FormControl('', Validators.required),
-    lastName: new FormControl(''),
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    confirmPassword: new FormControl('', Validators.required),
+  private formBuilder = inject(FormBuilder);
+
+  protected form = this.formBuilder.group({
+    name: ['', Validators.required],
+    lastName: [''],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+    confirmPassword: ['', Validators.required],
   });
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
 }
