@@ -1,22 +1,28 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './auth/components/login/login.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
   },
   {
-    path: 'login',
-    component: LoginComponent,
-    title: 'Login',
+    path: 'auth',
+    loadChildren: () =>
+      import('./features/auth/auth.routes').then((m) => m.AUTH_ROUTES),
   },
-  {
-    path: 'register',
-    loadComponent: () =>
-      import('./auth/components/register/register.component').then(
-        (m) => m.RegisterComponent
-      ),
-    title: 'Register',
-  },
+  // {
+  //   path: 'dashboard',
+  //   loadChildren: () => import('./features/dashboard/dashboard.routes')
+  //     .then(m => m.DASHBOARD_ROUTES),
+  //   canActivate: [AuthGuard]
+  // },
+  // {
+  //   path: 'transactions',
+  //   loadChildren: () =>
+  //     import('./features/transactions/transactions.routes').then(
+  //       (m) => m.TRANSACTION_ROUTES
+  //     ),
+  //   canActivate: [AuthGuard],
+  // },
 ];
