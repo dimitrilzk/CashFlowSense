@@ -14,21 +14,27 @@
   </header>
 
   @if (successMessage()){
-    <div class="alert alert-success">
-      {{ successMessage() }}
-    </div>
-  }
-
-  @if(errorMessage()){
-    <div class="alert alert-error">
-      {{ errorMessage() }}
-    </div>
+  <div class="alert alert-success">
+    {{ successMessage() }}
+  </div>
+  } @if(errorMessage()){
+  <div class="alert alert-error">
+    {{ errorMessage() }}
+  </div>
   }
 
   <fieldset>
     <tui-textfield>
       <label tuiLabel>Nome</label>
       <input placeholder="Il tuo nome" tuiTextfield formControlName="name" />
+      @if (f.name.invalid && f.name.touched){
+      <div class="error-message">
+        @if (f.name.errors?.['required']){
+        <span>Il nome è obbligatorio</span>
+        } @if (f.name.errors?.['minlength']){
+        <span>Il nome deve avere almeno 2 caratteri</span>}
+      </div>
+      }
     </tui-textfield>
     <tui-textfield>
       <label tuiLabel>Cognome</label>
@@ -49,6 +55,15 @@
       type="text"
     />
     <tui-icon icon="@tui.mail" />
+    @if (f.email.invalid && f.email.touched) {
+    <div class="error-message">
+      @if (f.email.errors?.['required']){
+      <span>L'email è obbligatoria</span>
+      } @if (f.email.errors?.['email']){
+      <span>Inserisci un'email valida</span>
+      }
+    </div>
+    }
   </tui-textfield>
 
   <tui-textfield>
@@ -60,6 +75,15 @@
       formControlName="password"
     />
     <tui-icon tuiPassword />
+    @if (f.password.invalid && f.password.touched) {
+    <div class="error-message">
+      @if (f.password.errors?.['required']){
+      <span>La password è obbligatoria</span>
+      } @if (f.password.errors?.['minlength']){
+      <span>La password deve avere almeno 8 caratteri</span>
+      }
+    </div>
+    }
   </tui-textfield>
 
   <tui-textfield>
@@ -71,6 +95,11 @@
       formControlName="confirmPassword"
     />
     <tui-icon tuiPassword />
+    @if (form.errors?.['passwordMismatch'] && f.confirmPassword.touched) {
+    <div class="error-message">
+      <span>Le password non coincidono</span>
+    </div>
+    }
   </tui-textfield>
 
   <footer>
@@ -80,7 +109,11 @@
       type="submit"
       [disabled]="!form.valid"
     >
-      Registrati
+      @if (!isLoading()){
+      <span> Registrati </span>
+      } @if (isLoading()){
+        <span>Registrazione in corso...</span>
+      }
     </button>
     <div tuiTitle>
       <button
